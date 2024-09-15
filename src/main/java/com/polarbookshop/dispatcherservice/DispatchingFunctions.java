@@ -24,10 +24,10 @@ public class DispatchingFunctions {
 
     // 주문의 아이디(Long 타입)을 입력 받고 OrderDispatchedMessage를 반환한다.
     @Bean
-    public Function<Flux<Long>, Flux<OrderDispatcedMessage>> label() {
+    public Function<Flux<Long>, Flux<OrderDispatchedMessage>> label() {
         return orderFlux -> orderFlux.map(orderId -> {
             log.info("The order with id {} is labeled.", orderId);
-            return new OrderDispatcedMessage(orderId);
+            return new OrderDispatchedMessage(orderId);
         });
     }
 }

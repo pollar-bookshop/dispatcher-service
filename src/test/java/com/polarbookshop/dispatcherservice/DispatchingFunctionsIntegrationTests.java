@@ -17,7 +17,7 @@ public class DispatchingFunctionsIntegrationTests {
 
     @Test
     void packAndLabelOrder() {
-        Function<OrderAcceptedMessage, Flux<OrderDispatcedMessage>>
+        Function<OrderAcceptedMessage, Flux<OrderDispatchedMessage>>
                 packAndLabel = catalog.lookup(Function.class, "pack|label");
         long orderId = 121;
 
@@ -25,7 +25,7 @@ public class DispatchingFunctionsIntegrationTests {
                 new OrderAcceptedMessage(orderId)
         ))
                 .expectNextMatches(dispatchedOrder ->
-                        dispatchedOrder.equals(new OrderDispatcedMessage(orderId))
+                        dispatchedOrder.equals(new OrderDispatchedMessage(orderId))
                 ).verifyComplete();
     }
 }
