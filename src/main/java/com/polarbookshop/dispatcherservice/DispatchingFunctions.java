@@ -16,8 +16,7 @@ public class DispatchingFunctions {
     @Bean // 빈으로 정의된 함수는 스프링 클라우드 함수가 찾아서 관리할 수 있다. 빈으로 등록된 함수는 스프링 함수 프래임워크에 의해 추가 기능을 갖는다.
     public Function<OrderAcceptedMessage, Long> pack() {
         return orderAcceptedMessage -> {
-            log.info("The order with id {} is packed.",
-                    orderAcceptedMessage.orderId());
+            log.info("The order with id {} is packed.", orderAcceptedMessage.orderId());
             return orderAcceptedMessage.orderId();
         };
     }
