@@ -24,3 +24,14 @@ spring:
         packlabel-out-0: # 출력 바인딩
           destination: order-dispatched # 바인더를 연결할 대상의 브로커 내에서의 실제 이름 (래빗MQ 익스체인지)
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
